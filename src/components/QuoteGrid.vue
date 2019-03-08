@@ -1,15 +1,16 @@
 <template>
-  <div class="row"></div>
+  <div class="row">
+    <appQuote v-for="quote in quotes" :key="quote">{{quote}}</appQuote>
+  </div>
 </template>
 
 <script>
+import Quote from "./Quote";
+
 export default {
   props: ["quotes"],
-  data: function() {
-    return {
-      quotes: ["Just a quote to see something"],
-      maxQuotes: 10
-    };
+  components: {
+    appQuote: Quote
   }
 };
 </script>

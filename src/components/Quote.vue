@@ -1,17 +1,13 @@
 <template>
-  <div class="row"></div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="panel-body quote">
+      <slot></slot>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
-  props: ["quotes"],
-  data: function() {
-    return {
-      quotes: ["Just a quote to see something"],
-      maxQuotes: 10
-    };
-  }
-};
+export default {};
 </script>
 
 <style>
@@ -26,5 +22,6 @@ export default {
 }
 
 .quote:hover {
+  background-color: #ffe2e2;
 }
 </style>
