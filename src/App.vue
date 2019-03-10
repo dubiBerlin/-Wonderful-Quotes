@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <app-header :quoteCount="quotes.length" :maxQuotes="maxQuotes"></app-header>
     <!-- EVENT vom Child zum Parent.
     Das Child Element appNewQuote feuert ein event namens 'quoteAdded' und gibt einen
     String damit zurück. App.vue hört somit auf das event und benutzt die eigene Methode 'newQuote'
@@ -15,6 +16,7 @@
 <script>
 import QuoteGrid from "./components/QuoteGrid.vue";
 import NewQuote from "./components/NewQuote.vue";
+import Header from "./components/Header.vue";
 
 export default {
   data: function() {
@@ -25,11 +27,16 @@ export default {
   },
   components: {
     appQuoteGrid: QuoteGrid,
-    appNewQuote: NewQuote
+    appNewQuote: NewQuote,
+    appHeader: Header
   },
   methods: {
     newQuote(quote) {
-      this.quotes.push(quote);
+      if (this.quotes.length < this.maxQuotes) {
+        this.quotes.push(quote);
+      } else {
+        alert("Delete Quotes first!");
+      }
     },
     delQuote(index) {
       this.quotes.splice(index, 1);
