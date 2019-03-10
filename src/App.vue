@@ -5,7 +5,7 @@
     String damit zurück. App.vue hört somit auf das event und benutzt die eigene Methode 'newQuote'
     um diesen String abzufangen.-->
     <appNewQuote @quoteAdded="newQuote"></appNewQuote>
-    <appQuoteGrid :quotes="quotes"></appQuoteGrid>
+    <appQuoteGrid @quoteDeleted="delQuote" :quotes="quotes"></appQuoteGrid>
     <div class="col-sm-12 text-center">
       <div class="alert alert-info">Info: Click on a quote to delete it!</div>
     </div>
@@ -29,9 +29,10 @@ export default {
   },
   methods: {
     newQuote(quote) {
-      console.log("ahaha");
       this.quotes.push(quote);
-      console.log("quotes: ", this.quotes);
+    },
+    delQuote(index) {
+      this.quotes.splice(index, 1);
     }
   }
 };
